@@ -158,7 +158,9 @@ Deploying multiple internet connections with simple, untracked queues? Letting y
 
 ## The Proposal
 
-![Network Topology](https://YOUR-IMAGE-HOST.com/topology.png)
+<img width="822" height="402" alt="image" src="https://github.com/user-attachments/assets/a2e6a48f-3060-4dfa-9b75-bd23f72bf4f9" />
+
+<img width="783" height="212" alt="image" src="https://github.com/user-attachments/assets/f0cf7627-9c4d-408e-a2e8-cd9fd0b6919f" />
 
 
 **Load Balancing Core:** Per-Connection Classifier (PCC) balancing connection states while preserving session affinity
