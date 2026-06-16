@@ -7,7 +7,7 @@
 
 ## The Topology
 
-<img width="1330" height="832" alt="TOPOLOGY2" src="https://github.com/user-attachments/assets/e9e3c65c-88b6-46a6-ad88-86bc2477cb42" />
+<img width="1330" height="832" alt="TOPOLOGY2" src="https://github.com/user-attachments/assets/e4647da0-058b-4771-94fd-0a0cf870c95e" />
 
 ---
 
