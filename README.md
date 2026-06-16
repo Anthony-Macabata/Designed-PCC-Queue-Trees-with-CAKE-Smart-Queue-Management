@@ -5,9 +5,9 @@
 
 ---
 
-## The Lore
+## The Topology
 
-<img width="1562" height="866" alt="image" src="https://github.com/user-attachments/assets/aae7597d-06f8-4fd4-9cc8-dee3dd3fddab" />
+<img width="1330" height="832" alt="TOPOLOGY2" src="https://github.com/user-attachments/assets/e9e3c65c-88b6-46a6-ad88-86bc2477cb42" />
 
 ---
 
@@ -160,7 +160,7 @@ Deploying multiple internet connections with simple, untracked queues? Letting y
 
 ## The Proposal
 
-<img width="1330" height="832" alt="TOPOLOGY2" src="https://github.com/user-attachments/assets/e9e3c65c-88b6-46a6-ad88-86bc2477cb42" />
+<img width="1462" height="835" alt="Topology" src="https://github.com/user-attachments/assets/5de0f718-cdc9-4a42-851c-1f41841b1662" />
 
 <img width="822" height="402" alt="image" src="https://github.com/user-attachments/assets/a2e6a48f-3060-4dfa-9b75-bd23f72bf4f9" />
 
