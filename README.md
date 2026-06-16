@@ -7,6 +7,12 @@
 
 ## The Lore
 
+<img width="1562" height="866" alt="image" src="https://github.com/user-attachments/assets/aae7597d-06f8-4fd4-9cc8-dee3dd3fddab" />
+
+---
+
+## The Lore
+
 Okay so here's the scenario:
 
 Setting up QoS on a single internet link? Straightforward.
@@ -52,14 +58,13 @@ Leveraged CAKE's internal multi-tin profiling inside the global parent queue tre
 
 ## The Proof: Validation Tests (Note these tests are done with the other ISP turned off to showcase the QOS)
 
-### Test 1: Latency Under Load (CAKE vs No CAKE)
+### Test 1: Jitter Under Load (CAKE vs No CAKE)
 
 **What I did:** Evaluated CAKE's performance during heavy link saturation on the active ISP line. Used Ookla Speedtest CLI on a Kali Linux endpoint. Ran tests first with CAKE disabled, then with CAKE enabled. Logged metrics including idle latency, loaded latency, jitter, packet loss, and throughput.
 
 **What happened:** 
-- **CAKE disabled:** Logs showed severe queue congestion. Jitter spiked dramatically. Loaded latency ballooned up to 320ms.
-- **CAKE enabled:** Router assumed control over the link bottleneck. Loaded latency clamped within <6ms variance of idle baseline. Jitter dropped to sub-millisecond levels. Full 15M/10M throughput preserved.
-
+- **CAKE disabled:** Logs showed severe queue congestion. Jitter spiked!
+- **CAKE enabled:** Router assumed control over the link bottleneck. Jitter dropped!
 
 
 <img width="1607" height="641" alt="CAKE1" src="https://github.com/user-attachments/assets/1bffca79-6c4a-4d7d-a174-bf7086251e17" />
@@ -67,8 +72,6 @@ Leveraged CAKE's internal multi-tin profiling inside the global parent queue tre
 
 https://github.com/user-attachments/assets/1e5c3df8-081d-4211-a4e7-8747003a22f8
 
-
-**The win:** 41/56 ms jitter down to 24/18 ms jitter. That's the CAKE difference.
 
 ---
 
@@ -78,7 +81,7 @@ https://github.com/user-attachments/assets/1e5c3df8-081d-4211-a4e7-8747003a22f8
 
 **What happened:** 
 - Single host: Consumed full 15 Mbps download boundary
-- Second host started: CAKE's flow-isolation hashing engine intercepted packets. Instead of first host monopolizing the channel, CAKE mathematically split the link. Both endpoints settled at ~7.5 Mbps each.
+- Second host started: CAKE's flow-isolation hashing engine intercepted packets. Instead of first host monopolizing the channel, CAKE mathematically split the link. Both endpoints settled with almost a fair bandwidth.
 
   
 
@@ -114,17 +117,16 @@ https://github.com/user-attachments/assets/c07275c8-bc01-44b8-bb31-949cb8dfb9df
 
 ---
 
-### Test 4: DiffServ4 Traffic Prioritization Validation
+### Test 4: DiffServ4 Traffic Prioritization Validation and Latency Test
 
 **What I did:** Validated CAKE's internal 4-tin DiffServ architecture. Generated three simultaneous long-duration traffic flows from Kali Linux using ICMP streams with explicit DSCP markers: EF (DSCP 46 / Voice), AF41 (DSCP 34 / Video), and CS1 (DSCP 8 / Bulk). Used MikroTik Torch on the WAN interface to verify DSCP header visibility. Logged latency, jitter, and packet loss per class.
 
-**What happened:** Torch confirmed all DSCP headers remained intact across the external interface. CAKE successfully mapped packet classes into designated priority tins under full saturation.
+**What happened:** Torch confirmed all DSCP headers remained intact across the external interface. CAKE successfully mapped packet classes into designated priority tins under full saturation. CAKE strictly honors DiffServ4 service priorities during heavy contention.
 
-- **EF (Voice Tin):** Lowest latency floor. Near-zero jitter.
-- **AF41 (Video Tin):** Stable intermediate routing. Zero packet drops.
-- **CS1 (Bulk Tin):** Highest latency degradation. Active packet queuing.
+- **EF (Voice Tin):** Lowest latency floor. Highest Priority
+- **AF41 (Video Tin):** Middle Latency. Second Highest Priority.
+- **CS1 (Bulk Tin):** Highest latency degradation. Lowest Priority.
 
-**The win:** CAKE strictly honors DiffServ4 service priorities during heavy contention.
 
 **WITH CAKE:**
 
@@ -144,7 +146,7 @@ Manually prioritizing certain apps/softwares takes too much time and stress on t
 ports are inaccurate since one session can open up multiple connections as we see on the PCC project. 
 
 **How I solved it:** Utilized Cake, here's the thing Cake is advised by Mikrotik to use on wan links not utilizing the full 1Gbs link, otherwise use FQ Codel.
-FQ Codel unlike cake tho treats each connection fair, like what we see on the PCC project one session can have so many connections, downloading something on the torrent can open up multiple connections with just one host, therefore your other connections will be compromised, sure per user fairness is achieved, but per user connection was not, is my point, that's why I utilized Cake
+Cake unlike FQ-Codel tho treats each connection fair, like what we see on the PCC project one session can have so many connections, downloading something on the torrent can open up multiple connections with just one host, therefore your other connections will be compromised, sure per user fairness is achieved, but per user connection was not, is my point, that's why I utilized Cake instead of FQ-Codel, but for fallback and more than 1Gbps WAN link FQ-Codel  for sure.
 
 
 ---
@@ -157,6 +159,8 @@ Deploying multiple internet connections with simple, untracked queues? Letting y
 
 
 ## The Proposal
+
+<img width="1330" height="832" alt="TOPOLOGY2" src="https://github.com/user-attachments/assets/e9e3c65c-88b6-46a6-ad88-86bc2477cb42" />
 
 <img width="822" height="402" alt="image" src="https://github.com/user-attachments/assets/a2e6a48f-3060-4dfa-9b75-bd23f72bf4f9" />
 
@@ -171,4 +175,4 @@ Deploying multiple internet connections with simple, untracked queues? Letting y
 
 ---
 
-*Third project down. More to come.* 🔥
+*Third project down. More to come.* 
