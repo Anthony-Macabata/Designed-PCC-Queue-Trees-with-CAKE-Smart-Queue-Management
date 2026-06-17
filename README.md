@@ -160,7 +160,7 @@ Deploying multiple internet connections with simple, untracked queues? Letting y
 
 ## The Proposal
 
-<img width="1462" height="835" alt="Topology" src="https://github.com/user-attachments/assets/5de0f718-cdc9-4a42-851c-1f41841b1662" />
+<img width="861" height="446" alt="image" src="https://github.com/user-attachments/assets/fcc84895-5534-4594-8ab8-07b42dfb3387" />
 
 <img width="822" height="402" alt="image" src="https://github.com/user-attachments/assets/a2e6a48f-3060-4dfa-9b75-bd23f72bf4f9" />
 
